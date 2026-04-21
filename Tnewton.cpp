@@ -13,14 +13,16 @@
 #include "Tnewton.h"
 
 Tnewton::Tnewton(Tfactorial* factorial) {
-
+    this->factorial = factorial;
 }
 
 Tnewton::~Tnewton() {
-
+    delete this->factorial;
 }
 
-void Tnewton::newton(int n, int k) {
-
+float Tnewton::newton(int n, int k) {
+    float f1 = this->factorial->factorial(n);
+    float f2 = this->factorial->factorial(k);
+    return f1/f2;
 }
 

@@ -11,16 +11,44 @@
 
 
 #include "Tbernaulie.h"
+#include <iostream>
+
+using namespace std;
 
 Tbernaulie::Tbernaulie(Tnewton* newton, Tpower* power) {
-
+    this->newton = newton;
+    this->power = power;
+    this->P=1;
 }
 
 Tbernaulie::~Tbernaulie() {
-
+    delete this->newton;
+    delete this->power;
 }
 
-void Tbernaulie::bernaurlie(int n, int k, float p) {
+float Tbernaulie::bernaurlie(float n, float k, float p) {
+    if(n<=0 || n<k || p>1){
+        cout<<"Podano nie odpowiednie wartosci";
+        return 0;
+    }
 
+    float newtonsymbol = this->newton->newton(n,k);
+
+    float power1 = this->power->power(p,k);
+    float power2 = this->power->power(1-p,n-k);
+
+    this->P = newtonsymbol * power1 * power2;
+    return this->P;
 }
 
+////////////////////////////////////////////////////////////
+
+int main()
+{
+    Tbernaulie* ber = new Tbernaulie(new Tnewton(new Tfactorial()), new Tpower());
+
+    cout<<ber->bernaurlie(12,3,0.3);
+
+    delete ber;
+    return 0;
+}

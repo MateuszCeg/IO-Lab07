@@ -17,7 +17,7 @@
 class Tfactorial {
 public:
 	Tfactorial();
-	void factorial(int n);
+    float factorial(int n);
 };
 
 #endif  //_TFACTORIAL_H

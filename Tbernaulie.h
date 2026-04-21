@@ -13,12 +13,14 @@
 #if !defined(_TBERNAULIE_H)
 #define _TBERNAULIE_H
 
+#include "Tnewton.h"
+#include "Tpower.h"
 
 class Tbernaulie {
 public:
 	Tbernaulie(Tnewton* newton, Tpower* power);
 	~Tbernaulie();
-	void bernaurlie(int n, int k, float p);
+    float bernaurlie(float n, float k, float p);
 private:
 	float P;
 	Tnewton* newton;

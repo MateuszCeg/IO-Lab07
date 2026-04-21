@@ -13,12 +13,13 @@
 #if !defined(_TNEWTON_H)
 #define _TNEWTON_H
 
+#include "Tfactorial.h"
 
 class Tnewton {
 public:
 	Tnewton(Tfactorial* factorial);
 	~Tnewton();
-	void newton(int n, int k);
+    float newton(int n, int k);
 private:
 	Tfactorial* factorial;
 };
