@@ -11,17 +11,21 @@
 
 
 #include "Tpower.h"
+#include <iostream>
+
+using namespace std;
 
 Tpower::Tpower() {
-
+    cout << "Tworzenie obiektu Tpower\n";
 }
 
-float Tpower::power(int x, int n) {
-    int result = 1;
-    for (int i = 0; i < n; ++i) {
-        result*=x;
-    }
-
-    return result;
+Tpower::~Tpower() {
+    cout << "Niszczenie obiektu Tpower\n";
 }
 
+float Tpower::power(float x, int n) {
+    if (n == 0) return 1;
+    if (n == 1) return x;
+
+    return x * power(x, n - 1);
+}

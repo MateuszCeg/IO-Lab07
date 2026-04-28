@@ -11,18 +11,28 @@
 
 
 #include "Tnewton.h"
+#include <iostream>
+
+using namespace std;
 
 Tnewton::Tnewton(Tfactorial* factorial) {
     this->factorial = factorial;
+    cout << "Tworzenie obiektu Tnewton\n";
 }
 
 Tnewton::~Tnewton() {
     delete this->factorial;
+    cout << "Niszczenie obiektu Tnewton\n";
 }
 
+
 float Tnewton::newton(int n, int k) {
+    if (k < 0 || k > n) return 0;
+
     float f1 = this->factorial->factorial(n);
     float f2 = this->factorial->factorial(k);
-    return f1/f2;
+    float f3 = this->factorial->factorial(n - k);
+
+    return f1 / (f2 * f3);
 }
 

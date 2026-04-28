@@ -18,24 +18,26 @@ using namespace std;
 Tbernaulie::Tbernaulie(Tnewton* newton, Tpower* power) {
     this->newton = newton;
     this->power = power;
-    this->P=1;
+    this->P = 1;
+    cout << "Tworzenie obiektu Tbernaulie\n";
 }
 
 Tbernaulie::~Tbernaulie() {
     delete this->newton;
     delete this->power;
+    cout << "Niszczenie obiektu Tbernaulie\n";
 }
 
 float Tbernaulie::bernaurlie(float n, float k, float p) {
-    if(n<=0 || n<k || p>1){
-        cout<<"Podano nie odpowiednie wartosci";
+    if(n <= 0 || n < k || p > 1 || p < 0) {
+        cout << "Podano nieodpowiednie wartosci\n";
         return 0;
     }
 
-    float newtonsymbol = this->newton->newton(n,k);
+    float newtonsymbol = this->newton->newton((int)n, (int)k);
 
-    float power1 = this->power->power(p,k);
-    float power2 = this->power->power(1-p,n-k);
+    float power1 = this->power->power(p, (int)k);
+    float power2 = this->power->power(1.0f - p, (int)(n - k));
 
     this->P = newtonsymbol * power1 * power2;
     return this->P;
@@ -47,8 +49,10 @@ int main()
 {
     Tbernaulie* ber = new Tbernaulie(new Tnewton(new Tfactorial()), new Tpower());
 
-    cout<<ber->bernaurlie(12,3,0.3);
+    cout << "\nObliczanie prawdopodobienstwa\n";
+    cout << "Wynik: " << ber->bernaurlie(12, 3, 0.3)<<"\n\n";
 
     delete ber;
+
     return 0;
 }

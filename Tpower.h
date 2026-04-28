@@ -16,8 +16,9 @@
 
 class Tpower {
 public:
-	Tpower();
-    float power(int x, int n);
+    Tpower();
+    ~Tpower();
+    float power(float x, int n);
 };
 
 #endif  //_TPOWER_H

@@ -11,14 +11,25 @@
 
 
 #include "Tfactorial.h"
+#include <iostream>
+
+using namespace std;
 
 Tfactorial::Tfactorial() {
+    cout << "Tworzenie obiektu Tfactorial\n";
+}
 
+Tfactorial::~Tfactorial() {
+    cout << "Niszczenie obiektu Tfactorial\n";
 }
 
 float Tfactorial::factorial(int n) {
-    if(n<=1) return 1;
+    if (n <= 1) return 1;
 
-    return factorial(n-1)*n;
+    float result = 1.0f;
+    for (int i = 2; i <= n; ++i) { // Obliczanie silni pętlą for
+        result *= i;
+    }
+    return result;
 }
 
